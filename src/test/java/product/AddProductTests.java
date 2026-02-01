@@ -6,8 +6,8 @@ import pages.CartPage;
 import pages.ProductsPage;
 import static org.testng.Assert.*;
 
-public class AddProduct extends BaseTest {
-    @Test
+public class AddProductTests extends BaseTest {
+    @Test(priority = 2)
     public void addProductToCart(){
         ProductsPage productsPage =
                 loginPage.login("standard_user", "secret_sauce");
@@ -18,6 +18,14 @@ public class AddProduct extends BaseTest {
         CartPage cartPage = productsPage.openCart();
 
         assertTrue(driver.getCurrentUrl().contains("cart"));
+    }
+    @Test(priority = 1)
+    public void numOfProducts(){
+        ProductsPage productsPage =
+                loginPage.login("standard_user","secret_sauce");
+        int actualProductsCount = productsPage.getProductsCount();
+        assertEquals( actualProductsCount, 6,
+                "Products count is not equal 6 !");
     }
 
 }

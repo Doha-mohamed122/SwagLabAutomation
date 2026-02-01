@@ -6,7 +6,7 @@ import pages.CartPage;
 import pages.ProductsPage;
 import static org.testng.Assert.*;
 
-public class CartProducts extends BaseTest {
+public class CartProductsTests extends BaseTest {
     @Test
     public void verifyProductInCart(){
         ProductsPage productsPage =
