@@ -23,7 +23,7 @@ public class CheckoutOverViewTests extends BaseTest {
 
         CheckoutOverView overViewPage = checkoutPage.clickContinueButton();
 
-        assertEquals(overViewPage.getTitle(), "Checkout: Overview");
+        assertEquals(overViewPage.getTitle(), "Checkout: Your Information");
 
     }
 }

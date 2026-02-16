@@ -15,7 +15,7 @@ public class CheckoutComplete {
         return  driver.findElement(message).getText();
     }
     public ProductsPage clickBackButton(){
-        driver.findElement(backButton);
+        driver.findElement(backButton).click();
         return new ProductsPage(driver);
     }
 }

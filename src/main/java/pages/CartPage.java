@@ -12,6 +12,7 @@ public class CartPage {
     private By cartTitle = By.className("title");
     private By productName = By.className("inventory_item_name");
     private By checkoutButton = By.id("checkout");
+    private By cartItems = By.className("cart_item");
 
     public String getCartTitle(){
         return driver.findElement(cartTitle).getText();
@@ -24,4 +25,14 @@ public class CartPage {
         driver.findElement(checkoutButton).click();
         return new CheckoutPage(driver);
     }
+    public int getItemsCount(){
+        return driver.findElements(cartItems).size();
+    }
+    public void removeProduct(String productName){
+        By removeButton = By.xpath(
+                "//div[text()='"+productName+"']/ancestor::div[@class='cart_item']//button"
+        );
+        driver.findElement(removeButton).click();
+    }
+
 }

@@ -20,7 +20,7 @@ public class BaseTest {
     public void setup(){
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @BeforeMethod
@@ -28,6 +28,15 @@ public class BaseTest {
         driver.get("https://www.saucedemo.com/");
         loginPage = new LoginPage(driver);
     }
+
+    public void switchToNewWindow(String mainWindow){
+        for(String window : driver.getWindowHandles()){
+            if(!window.equals(mainWindow)){
+                driver.switchTo().window(window);
+            }
+        }
+    }
+
 
     @AfterMethod
     public void takeScreenshot(ITestResult result) throws IOException {
